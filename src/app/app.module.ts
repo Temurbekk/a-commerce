@@ -9,7 +9,12 @@ import { RouterModule } from '@angular/router';
 import { ErrorPageComponent } from './error-page/error-page.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, ProfileComponent, ErrorPageComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    ProfileComponent,
+    ErrorPageComponent,
+  ],
   imports: [BrowserModule, RouterModule.forRoot(routes)],
   providers: [],
   bootstrap: [AppComponent],
