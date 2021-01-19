@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductService } from '../../product/services/product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -6,7 +8,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cart.component.scss'],
 })
 export class CartComponent implements OnInit {
-  constructor() {}
+  ordered: boolean | undefined;
+  products: any = [];
+  newProduct: any;
+  constructor(
+    private _productService: ProductService,
+    private _router: Router
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.products = this._productService.products;
+    // this._subscribeToProducts();
+  }
+  complete() {
+    this.ordered = true;
+    this._productService.products = [];
+    this._productService.setCounter(null);
+  }
+
+  explore() {
+    this._router.navigate(['/products']);
+  }
 }
